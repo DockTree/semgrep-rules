@@ -1,0 +1,13 @@
+rules:
+  - id: rust_postgre_sqli_format_query
+    languages:
+      - rust
+    severity: ERROR
+    message: Rust Postgre sql injection format query
+    pattern-sources:
+      - pattern: "#[get(...)]"
+    pattern-sinks:
+      - pattern: conn.query(...)
+      - pattern: conn.query_one(...)
+    mode: taint
+
